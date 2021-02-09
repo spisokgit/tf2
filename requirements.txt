@@ -1,0 +1,4 @@
+jedi==0.17.2
+matplotlib
+opencv-python
+scipy
