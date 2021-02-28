@@ -7,16 +7,19 @@
 * nvidia driver
 ```
     sudo add-apt-repository ppa:graphics-drivers/ppa
-    sudo apt update
+    sudo apt-get update
+    sudo apt-get install -y ubuntu-drivers-common
     sudo ubuntu-drivers autoinstall
     sudo reboot
+    nvidia-smi
 ```
 * nvidia container toolkit 공식홈참조 https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker
 ```
   curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - 
   distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
   curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
-  sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit 
+  sudo apt-get update
+  sudo apt-get install -y nvidia-container-toolkit 
   sudo systemctl restart docker
   sudo docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
 ```
@@ -32,7 +35,7 @@ docker image tensorflow/tensorflow:latest-gpy-jupyter 개선
 ### 빌드 완성 docker image link 및 pull, 실행 example
 * https://hub.docker.com/repository/docker/spisok/tf2
 * docker pull spisok/tf2:gpu-jupyter-cv
-* docker run --gpus all -v "$PWD":/tf -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv bash -c "source /etc/bash.bashrc && jupyter notebook --notebook-dir=/tf --ip 0.0.0.0 --no-browser --allow-root --debug"
+* docker run --gpus all -v "$PWD":/tf -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv 
 
 ### container에서 확인
 ```
