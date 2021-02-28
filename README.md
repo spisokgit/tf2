@@ -1,27 +1,27 @@
 ## ubunt host에 3가지 설치 : 1. nvidia driver   2. docker 19.03이상   3. nvidia container toolkit 
 * docker 19.03이상 : 공식홈참조 : https://docs.docker.com/engine/install/ubuntu/
 ```
-  sudo apt-get update && sudo apt-get install docker.io
-  (curl -sSL https://get.docker.com | sh)
+sudo apt-get update && sudo apt-get install docker.io
+(curl -sSL https://get.docker.com | sh)
 ```
 * nvidia driver
 ```
-    sudo add-apt-repository ppa:graphics-drivers/ppa
-    sudo apt-get update
-    sudo apt-get install -y ubuntu-drivers-common
-    sudo ubuntu-drivers autoinstall
-    sudo reboot
-    nvidia-smi
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt-get update
+sudo apt-get install -y ubuntu-drivers-common
+sudo ubuntu-drivers autoinstall
+sudo reboot
+nvidia-smi
 ```
 * nvidia container toolkit 공식홈참조 https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker
 ```
-  curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - 
-  distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
-  curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
-  sudo apt-get update
-  sudo apt-get install -y nvidia-container-toolkit 
-  sudo systemctl restart docker
-  sudo docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - 
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+sudo apt-get update
+sudo apt-get install -y nvidia-container-toolkit 
+sudo systemctl restart docker
+sudo docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
 ```
 
 ## tf2의 Dockerfile
@@ -39,8 +39,8 @@ docker image tensorflow/tensorflow:latest-gpy-jupyter 개선
 
 ### container에서 확인
 ```
-    import tensorflow
-    tensorflow.__version__
-    from tensorflow.python.client import device_lib
-    device_lib.list_local_devices()
+import tensorflow
+tensorflow.__version__
+from tensorflow.python.client import device_lib
+device_lib.list_local_devices()
 ```
