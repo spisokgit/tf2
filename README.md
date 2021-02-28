@@ -1,4 +1,9 @@
-## ubunt host에 3가지 설치 : 1. nvidia driver  2. nvidia container toolkit  3. docker 19.03이상   
+## ubunt host에 3가지 설치 : 1. nvidia driver   2. docker 19.03이상   3. nvidia container toolkit 
+* docker 19.03이상 : 공식홈참조 : https://docs.docker.com/engine/install/ubuntu/
+```
+  sudo apt-get update && sudo apt-get install docker.io
+  (curl -sSL https://get.docker.com | sh)
+```
 * nvidia driver
 ```
     sudo add-apt-repository ppa:graphics-drivers/ppa
@@ -13,11 +18,7 @@
   curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
   sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit 
 ```
-* docker 19.03이상 : 공식홈참조 : https://docs.docker.com/engine/install/ubuntu/
-```
-  sudo apt-get update && sudo apt-get install docker.io
-  (curl -sSL https://get.docker.com | sh)
-```
+
 ## tf2의 Dockerfile
 docker image tensorflow/tensorflow:latest-gpy-jupyter 개선
 * jupyter 자동완성기능이 되지 않아 jedi 설치
