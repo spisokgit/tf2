@@ -32,7 +32,9 @@ docker image tensorflow/tensorflow:latest-gpy-jupyter 개선
 * docker run --gpus all -v "$PWD":/tf -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv bash -c "source /etc/bash.bashrc && jupyter notebook --notebook-dir=/tf --ip 0.0.0.0 --no-browser --allow-root --debug"
 
 ### 설치후 확인
-import tensorflow
-tensorflow.__version__
-from tensorflow.python.client import device_lib
-device_lib.list_local_devices()
+```
+    import tensorflow
+    tensorflow.__version__
+    from tensorflow.python.client import device_lib
+    device_lib.list_local_devices()
+```
