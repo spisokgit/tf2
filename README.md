@@ -40,7 +40,7 @@ docker image tensorflow/tensorflow:latest-gpy-jupyter 개선한 내용
 * localhost:9999로 접속하여 token 입력 또는 token password로 변경
 ```
 import tensorflow
-tensorflow.__version__
+print(tensorflow.__version__)
 from tensorflow.python.client import device_lib
 device_lib.list_local_devices()
 ```
