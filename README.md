@@ -34,6 +34,7 @@ docker image tensorflow/tensorflow:latest-gpy-jupyter 개선한 내용
 ## 빌드 완성 docker image link 및 pull, 실행 example
 * https://hub.docker.com/repository/docker/spisok/tf2
 * docker pull spisok/tf2:gpu-jupyter-cv
+* host 작업폴더($PWD)로 이동 ( container와 폴더 공유하기 위해 )
 * docker run --gpus all -v "$PWD":/tf -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv 
 ## jupyter 또는 container 에서 gpu 확인
 * localhost:9999로 접속하여 token 입력 또는 token password로 변경
