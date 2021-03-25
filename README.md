@@ -44,3 +44,6 @@ tensorflow.__version__
 from tensorflow.python.client import device_lib
 device_lib.list_local_devices()
 ```
+## 필요 python package 설치 install 방법
+* jupyter 실행후 
+* !pip install package
