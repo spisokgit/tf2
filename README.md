@@ -47,3 +47,19 @@ print(device_lib.list_local_devices())
 ## 필요 python package 설치 install 방법
 * jupyter 실행후 
 * !pip install package
+* 
+## docker container service 등록 
+* cd /etc/systemd/system
+* vi [설정한 서비스].service
+```[Unit]
+Wants=docker.service
+After=docker.service
+[Service]
+RemainAfterExit=yes
+ExecStart=/usr/bin/docker start [실행할 docker container 이름]
+ExecStop=/usr/bin/docker stop [실행할 docker container 이름]
+[Install]
+WantedBy=multi-user.target
+```
+* systemctl start [설정한 서비스] → 서비스를 시작
+* systemctl enable [설정한 서비스] → 부팅시 실행할 수 있도록 해당 서비스 활성화
