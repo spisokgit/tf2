@@ -51,7 +51,7 @@ print(device_lib.list_local_devices())
 * !pip install package
 * 
 ## docker container service 등록 
-* cd /etc/systemd/system
+* cd /etc/systemd/system 또는 /usr/lib/systemd/system
 * vi [설정한 서비스].service
 ```[Unit]
 Wants=docker.service
