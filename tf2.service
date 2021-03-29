@@ -1,0 +1,12 @@
+[Unit]
+Wants=docker.service
+After=docker.service
+
+[Service]
+RemainAfterExit=yes
+ExecStart=/usr/bin/docker start tf2
+ExecStop=/usr/bin/docker stop tf2
+
+[Install]
+WantedBy=multi-user.target
+
