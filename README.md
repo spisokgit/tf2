@@ -64,5 +64,5 @@ ExecStop=/usr/bin/docker stop tf2
 [Install]
 WantedBy=multi-user.target
 ```
-* systemctl start tf2 → 서비스를 시작
-* systemctl enable tf2 → 부팅시 실행할 수 있도록 해당 서비스 활성화
+* systemctl start tf2.service → 서비스를 시작
+* systemctl enable tf2.service → 부팅시 실행할 수 있도록 해당 서비스 활성화
