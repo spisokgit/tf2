@@ -30,14 +30,14 @@ docker image tensorflow/tensorflow:latest-gpy-jupyter 개선한 내용
 * requirements.txt 설치
 ### docker build 
 * git clone https://github.com/spisokgit/tf2.git
-* docker build --rm -t image_name .
+* docker build --rm -t spisok/tf2:gpu-jupyter-cv .
 ## 빌드 완성 docker image link 및 pull, 실행 example
 * https://hub.docker.com/repository/docker/spisok/tf2
-* docker pull spisok/tf2:gpu-jupyter-cv2
+* docker pull spisok/tf2:gpu-jupyter-cv
 * host 작업폴더($PWD)로 이동 ( container와 폴더 공유하기 위해 )
-* docker run --gpus all -v "$PWD":/tf -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2
+* docker run --gpus all -v "$PWD":/tf -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv
 * host timezone과 같이 맞추어 주고 싶을 경우 아래 (host timezone 설정 : https://www.lesstif.com/lpt/ubuntu-linux-timezone-setting-61899162.html )
-* docker run --gpus all -v "$PWD":/tf -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2
+* docker run --gpus all -v "$PWD":/tf -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv
 ## jupyter 또는 container 에서 gpu 확인
 * localhost:9999로 접속하여 token 입력 또는 token password로 변경
 ```
@@ -52,16 +52,16 @@ print(device_lib.list_local_devices())
 * 
 ## docker container service 등록 
 * cd /etc/systemd/system 또는 /usr/lib/systemd/system
-* vi [설정한 서비스].service
+* vi tf2.service
 ```[Unit]
 Wants=docker.service
 After=docker.service
 [Service]
 RemainAfterExit=yes
-ExecStart=/usr/bin/docker start [실행할 docker container 이름]
-ExecStop=/usr/bin/docker stop [실행할 docker container 이름]
+ExecStart=/usr/bin/docker start tf2
+ExecStop=/usr/bin/docker stop tf2
 [Install]
 WantedBy=multi-user.target
 ```
-* systemctl start [설정한 서비스] → 서비스를 시작
-* systemctl enable [설정한 서비스] → 부팅시 실행할 수 있도록 해당 서비스 활성화
+* systemctl start tf2 → 서비스를 시작
+* systemctl enable tf2 → 부팅시 실행할 수 있도록 해당 서비스 활성화
