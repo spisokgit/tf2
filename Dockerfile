@@ -1,6 +1,7 @@
 FROM tensorflow/tensorflow:latest-gpu-jupyter
 
 LABEL MAINTAINER="spisok@naver.com"
+ENV TZ Asia/Seoul
 
 WORKDIR /root
 RUN apt-get update --fix-missing \
