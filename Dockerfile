@@ -6,7 +6,7 @@ ENV TZ Asia/Seoul
 WORKDIR /root
 RUN apt-get update --fix-missing \
     && apt-get install -y fonts-nanum \
-    && apt-get install -y cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev \
+    && apt-get install -y cmake git libgl1-mesa-glx libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev \
     && rm -rf /var/lib/apt/lists/*
 RUN apt-get update --fix-missing \
     && apt-get install -y python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libdc1394-22-dev \
