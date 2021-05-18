@@ -9,4 +9,5 @@ scikit-learn
 statsmodels
 pystan
 fbprophet
-
+tensorflow_datasets
+tensorflow_hub
