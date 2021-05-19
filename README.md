@@ -25,6 +25,7 @@ sudo docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
 ```
 ## tf2의 Dockerfile를 이용한 build
 docker image tensorflow/tensorflow:latest-gpy-jupyter 개선한 내용
+* tensorflow/tensorflow:latest-gpy-jupyter 이미지는 계속 TF 버전이 업그레이드됨에 따라 변경됨
 * jupyter 자동완성기능이 되지 않아 jedi 설치
 * opencv-python 설치하기 위한 build
 * requirements.txt 설치
