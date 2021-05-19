@@ -51,9 +51,11 @@ from tensorflow.python.client import device_lib
 print(device_lib.list_local_devices())
 ```
 ## 필요 python package 설치 install 방법
-* jupyter 실행후 
+* 1. jupyter 실행후 
 * !pip install package
-* 
+* 2. container 접속 : docker exec -it tf2 bash
+* apt-get update
+* apt-get install package
 ## docker container service 등록 
 * cd /etc/systemd/system 또는 /usr/lib/systemd/system
 * vi tf2.service
