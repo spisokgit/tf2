@@ -56,7 +56,8 @@ print(device_lib.list_local_devices())
 ```
 * 확인
 ```
-watch -n1 'nvidia-smi;free -m;mpstat;docker stats tf2'
+watch -n1 'nvidia-smi;free -m;mpstat'
+watch -n1 'docker stats tf2'
 ```
 ## 필요 python package 설치 install 방법
 * 1. jupyter 실행후 
