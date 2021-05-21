@@ -54,17 +54,20 @@ print(tensorflow.__version__)
 from tensorflow.python.client import device_lib
 print(device_lib.list_local_devices())
 ```
-* 확인
-```
-watch -n1 'nvidia-smi;free -m;mpstat'
-watch -n1 'docker stats tf2'
-```
+* GPU, cpu확인
+``` watch -n1 'nvidia-smi;free -m;mpstat'```
+* docker container 자원 사용량
+```docker stats tf2```
+* docker log
+````docker logs tf2```
 ## 필요 python package 설치 install 방법
 * 1. jupyter 실행후 
-* !pip install package
+``` !pip install package```
 * 2. container 접속 : docker exec -it tf2 bash
-* apt-get update
-* apt-get install package
+``` 
+apt-get update
+apt-get install package
+ ```
 ## docker container service 등록 
 * cd /etc/systemd/system 또는 /usr/lib/systemd/system
 * vi tf2.service
