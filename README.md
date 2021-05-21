@@ -42,6 +42,10 @@ docker image tensorflow/tensorflow:latest-gpy-jupyter 개선한 내용
 * docker run --gpus all -v "$PWD":/tf -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2
 * GPU shared memory container 확보 필요시
 * docker run --gpus all --shm-size=1g --ulimit memlock=-1 -v "$PWD":/tf -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2
+* cpu 추가배정
+* docker run --gpus all --cpuset-cpus=8 --shm-size=1g --ulimit memlock=-1 -v "$PWD":/tf -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2
+
+
 ## jupyter 또는 container 에서 gpu 확인
 * localhost:9999로 접속하여 token 입력 또는 token password로 변경
 ```
