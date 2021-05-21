@@ -59,6 +59,32 @@ print(tensorflow.__version__)
 from tensorflow.python.client import device_lib
 print(device_lib.list_local_devices())
 ```
+* Init 
+```
+import os
+import tensorflow
+print(f'TF version : {tensorflow.__version__}')
+import tensorflow as tf
+from tensorflow.python.client import device_lib
+# gpu check
+print(device_lib.list_local_devices())
+
+# to check gpu in tensorflow
+gpus = tf.config.list_physical_devices('GPU') 
+if gpus:    
+    try:
+        tf.config.experimental.set_visible_devices(gpus, 'GPU') # 특정 GPU를 tf에서 알 수 있게
+#         os.environ["CUDA_VISIBLE_DEVICES"]= "0"  # Choosing which GPU this notebook can access  # (multi in parallel, on different GPUs):
+#         tf.config.experimental.set_memory_growth(gpus[0], True)  # 점진적 memory 증가, 이전 할당 메모리값 삭제하지 않음 # 아래는 강제 배정
+        tf.config.experimental.set_virtual_device_configuration(gpus[0],[tf.config.experimental.VirtualDeviceConfiguration(memory_limit=7500)])
+        tf.config.set_soft_device_placement(True)  # 명시되지 않았을 경우 tf에서 자동설정  (중요)
+#         tf.debugging.set_log_device_placement(True) # debug  # cpu, gpu 할당 표시
+        logical_gpus = tf.config.experimental.list_logical_devices('GPU')
+        print(len(gpus), "Physical GPUs,", len(logical_gpus), "Logical GPUs")
+    except RuntimeError as e:
+        # Memory growth must be set before GPUs have been initialized
+        print(e)
+```
 * GPU, cpu확인
 ``` watch -n1 'nvidia-smi;free -m;mpstat'```
 * docker container 자원 사용량
