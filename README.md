@@ -30,21 +30,26 @@ docker image tensorflow/tensorflow:latest-gpy-jupyter 개선한 내용
 * opencv-python 설치하기 위한 build
 * requirements.txt 설치
 ### docker build 
-* git clone https://github.com/spisokgit/tf2.git
-* docker build --rm -t spisok/tf2:gpu-jupyter-cv .
+```
+git clone https://github.com/spisokgit/tf2.git
+docker build --rm -t spisok/tf2:gpu-jupyter-cv .
+```
 ## 빌드 완성 docker image link 및 pull, 실행 example
 * https://hub.docker.com/repository/docker/spisok/tf2
-* docker pull spisok/tf2:gpu-jupyter-cv2
+```
+docker pull spisok/tf2:gpu-jupyter-cv2
+```
 * host 작업폴더($PWD)로 이동 ( container와 폴더 공유하기 위해 )
-* docker run --gpus all -v "$PWD":/tf -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2
-* host timezone과 같이 맞추어 주고 싶을 경우 아래 
-* sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime (host timezone 설정 : https://www.lesstif.com/lpt/ubuntu-linux-timezone-setting-61899162.html )
-* docker run --gpus all -v "$PWD":/tf -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2
+```
+docker run --gpus all -v "$PWD":/tf -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2
+```
+* host timezone과 같이 맞추어 주고 싶을 경우 아래  (host timezone 설정 : https://www.lesstif.com/lpt/ubuntu-linux-timezone-setting-61899162.html )
+```
+sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+docker run --gpus all -v "$PWD":/tf -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2
+``` 
 * GPU shared memory container 확보 필요시
-* docker run --gpus all --shm-size=1g --ulimit memlock=-1 -v "$PWD":/tf -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2
-* cpu 추가배정
-* docker run --gpus all --shm-size=1g --ulimit memlock=-1 -v "$PWD":/tf -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2
-
+``` docker run --gpus all --shm-size=1g --ulimit memlock=-1 -v "$PWD":/tf -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2```
 
 ## jupyter 또는 container 에서 gpu 확인
 * localhost:9999로 접속하여 token 입력 또는 token password로 변경
@@ -59,7 +64,7 @@ print(device_lib.list_local_devices())
 * docker container 자원 사용량
 ```docker stats tf2```
 * docker log
-````docker logs tf2```
+```docker logs tf2```
 ## 필요 python package 설치 install 방법
 * 1. jupyter 실행후 
 ``` !pip install package```
