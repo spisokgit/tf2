@@ -43,7 +43,7 @@ docker image tensorflow/tensorflow:latest-gpy-jupyter 개선한 내용
 * GPU shared memory container 확보 필요시
 * docker run --gpus all --shm-size=1g --ulimit memlock=-1 -v "$PWD":/tf -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2
 * cpu 추가배정
-* docker run --gpus all --cpuset-cpus=8 --shm-size=1g --ulimit memlock=-1 -v "$PWD":/tf -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2
+* docker run --gpus all --shm-size=1g --ulimit memlock=-1 -v "$PWD":/tf -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2
 
 
 ## jupyter 또는 container 에서 gpu 확인
@@ -53,6 +53,10 @@ import tensorflow
 print(tensorflow.__version__)
 from tensorflow.python.client import device_lib
 print(device_lib.list_local_devices())
+```
+* 확인
+```
+watch -n1 'nvidia-smi;free -m;mpstat;docker stats tf2'
 ```
 ## 필요 python package 설치 install 방법
 * 1. jupyter 실행후 
