@@ -43,6 +43,11 @@ docker pull spisok/tf2:gpu-jupyter-cv2
 ```
 docker run --gpus all -v "$PWD":/tf -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2
 ```
+* container안에서 jupyter notebook실행시 portforwarding 안 될 경우
+ ```
+ docker run --gpus all -v "$PWD":/tf -p 7777:7777 --name tf2 spisok/tf2:gpu-jupyter-cv2
+ container에서 jupypte notebook --port=7777 --ip=0.0.0.0
+ ```
 * host timezone과 같이 맞추어 주고 싶을 경우 아래  (host timezone 설정 : https://www.lesstif.com/lpt/ubuntu-linux-timezone-setting-61899162.html )
 ```
 sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
