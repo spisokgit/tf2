@@ -56,6 +56,8 @@ docker run --gpus all -v "$PWD":/tf -v /etc/localtime:/etc/localtime:ro -e TZ=As
 ``` 
 * GPU shared memory container 확보 필요시
 ``` docker run --gpus all --shm-size=1g --ulimit memlock=-1 -v "$PWD":/tf -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2```
+* streamlit를 module 추가하여 8501포트 개방시
+ ``` docker run --gpus all -p 9999:8888 -p 8501:8501 -p 8000:8000 -p 6006:6006 --name tf2_jupyter_user -v "$PWD":/usr/src/ -v /etc/localtime:/etc/localtime:ro tf2_jupyter_user ```
 
 ## jupyter 또는 container 에서 gpu 확인
 * localhost:9999로 접속하여 token 입력 또는 token password로 변경
