@@ -49,7 +49,7 @@ docker run --gpus all -v "$PWD":/tf -p 9999:8888 -p 6006:6006 --name tf2 spisok/
  docker run --gpus all -v "$PWD":/tf -p 7777:7777 --name tf2 spisok/tf2:gpu-jupyter-cv2
  container에서 jupypte notebook --port=7777 --ip=0.0.0.0
  ```
-* host timezone과 같이 맞추어 주고 싶을 경우 아래  (host timezone 설정 : https://www.lesstif.com/lpt/ubuntu-linux-timezone-setting-61899162.html )
+* host timezone과 같이 맞추어 주고 싶을 경우 아래  (host timezone 설정 : https://blog.buffashe.com/2020/02/changing-ubuntu-timezone/ )
 ```
 sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 docker run --gpus all -v "$PWD":/tf -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2
