@@ -109,7 +109,7 @@ apt-get install package
  ```
 ## docker container service 등록 
 * cd /etc/systemd/system 또는 /usr/lib/systemd/system
-* vi tf2.service
+* sudo vi tf2.service
 ```
 [Unit]
 Wants=docker.service
