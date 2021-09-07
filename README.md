@@ -44,7 +44,10 @@ docker build --rm -t spisok/tf2:gpu-jupyter-cv .
 ## 빌드 완성 docker image link 및 pull, 실행 example
 * https://hub.docker.com/repository/docker/spisok/tf2
 ```
+root권한
 docker pull spisok/tf2:gpu-jupyter-cv2
+sin 권한
+docker pull spisok/tf2_jupyter_user
 ```
 * host 작업폴더($PWD)로 이동 ( container와 폴더 공유하기 위해 )
 ```
