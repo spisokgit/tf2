@@ -1,6 +1,12 @@
 ## ubuntu host에 3가지 설치 : 1. nvidia driver   2. docker 19.03이상   3. nvidia container toolkit 
 * nvidia driver
 ```
+삭제필요시
+sudo apt-get remove --purge nvidia-*
+sudo apt-get autoremove
+
+설치
+sudo apt-get update
 sudo add-apt-repository ppa:graphics-drivers/ppa
 sudo apt-get update
 sudo apt-get install -y ubuntu-drivers-common
