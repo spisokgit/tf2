@@ -29,23 +29,26 @@ RUN pip install --no-cache-dir -r requirements.txt \
     && cp /usr/share/fonts/truetype/nanum/*.* /usr/local/lib/python3.6/dist-packages/matplotlib/mpl-data/fonts/ttf
 
 # setup user and group ids
-ARG USER=sin
-ARG USER_ID=1000
-ARG GROUP_ID=1000
-ENV USER_ID $USER_ID
-ENV GROUP_ID $GROUP_ID
+# ARG USER=sin
+# ARG USER_ID=1000
+# ARG GROUP_ID=1000
+# ENV USER_ID $USER_ID
+# ENV GROUP_ID $GROUP_ID
 
 # add non-root user and give permissions to workdir
-RUN groupadd --gid $GROUP_ID $USER && \
-          adduser $USER --ingroup $USER --gecos '' --disabled-password --uid $USER_ID && \
-          mkdir -p /usr/src && \
-          chown -R $USER:$USER /usr/src
+# RUN groupadd --gid $GROUP_ID $USER && \
+#           adduser $USER --ingroup $USER --gecos '' --disabled-password --uid $USER_ID && \
+#           mkdir -p /usr/src && \
+#           chown -R $USER:$USER /usr/src
 
 # set working directory
-WORKDIR /usr/src
+# WORKDIR /usr/src
 
 # switch to non-root user
-USER $USER
+# USER $USER
 
-# CMD ["source","/etc/bash.bashrc","&&","jupyter","notebook","--notebook-dir=/usr/src","--ip","0.0.0.0","--no-browser","--allow-root","--debug"]
-CMD ["jupyter","notebook","--notebook-dir=/usr/src","--ip","0.0.0.0","--no-browser","--allow-root","--debug"]
+# root
+CMD ["source","/etc/bash.bashrc","&&","jupyter","notebook","--notebook-dir=/usr/src","--ip","0.0.0.0","--no-browser","--allow-root","--debug"]
+
+# user
+# CMD ["jupyter","notebook","--notebook-dir=/usr/src","--ip","0.0.0.0","--no-browser","--allow-root","--debug"]
