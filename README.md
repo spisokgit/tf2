@@ -69,6 +69,9 @@ docker run --gpus all -v "$PWD":/usr/src -v /etc/localtime:/etc/localtime:ro -e 
  ``` docker run --gpus all -p 9999:8888 -p 8501:8501 -p 8000:8000 -p 6006:6006 --name tf2_jupyter_user -v "$PWD":/usr/src/ -v /etc/localtime:/etc/localtime:ro tf2_jupyter_user ```
 * docker file에서 user id 1000되어 있으나 변경이 필요할 경우 
 ``` docker run --gpus all --user $(id -u):$(id -g) -p 9999:8888 -p 6006:6006 --name tf2_jupyter_user -v "$PWD":/usr/src/ -v /etc/localtime:/etc/localtime:ro tf2_jupyter_user ```
+* docker root권한으로 실행시 Error "source" file not found in $PATH 발생시
+``` docker run --gpus all -v "$PWD":/usr/src -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2 bash -c "jupyter notebook --notebook-dir=/usr/src --ip=0.0.0.0 --no-browser --allow-root --debug" ```
+
 
 ## jupyter 또는 container 에서 gpu 확인
 * localhost:9999로 접속하여 token 입력 또는 token password로 변경
