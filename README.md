@@ -51,17 +51,17 @@ docker pull spisok/tf2_jupyter_user
 ```
 * host 작업폴더($PWD)로 이동 ( container와 폴더 공유하기 위해 )
 ```
-docker run --gpus all -v "$PWD":/tf -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2
+docker run --gpus all -v "$PWD":/usr/src -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2
 ```
 * container안에서 jupyter notebook실행시 portforwarding 안 될 경우
  ```
- docker run --gpus all -v "$PWD":/tf -p 7777:7777 --name tf2 spisok/tf2:gpu-jupyter-cv2
+ docker run --gpus all -v "$PWD":/usr/src -p 7777:7777 --name tf2 spisok/tf2:gpu-jupyter-cv2
  container에서 jupypte notebook --port=7777 --ip=0.0.0.0
  ```
 * host timezone과 같이 맞추어 주고 싶을 경우 아래  (host timezone 설정 : https://blog.buffashe.com/2020/02/changing-ubuntu-timezone/ )
 ```
 sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
-docker run --gpus all -v "$PWD":/tf -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2
+docker run --gpus all -v "$PWD":/usr/src -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2
 ``` 
 * GPU shared memory container 확보 필요시
 ``` docker run --gpus all --shm-size=1g --ulimit memlock=-1 -v "$PWD":/tf -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -p 9999:8888 -p 6006:6006 --name tf2 spisok/tf2:gpu-jupyter-cv2```
