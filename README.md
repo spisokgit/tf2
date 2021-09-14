@@ -103,7 +103,7 @@ if gpus:
         print(e)
 ```
 * GPU, cpu확인
-``` watch -n1 'nvidia-smi;free -m;mpstat'```
+``` watch -n1 'nvidia-smi;free -m;mpstat -P ALL'```
 * docker container 자원 사용량
 ```docker stats tf2```
 * docker log
