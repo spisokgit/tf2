@@ -37,6 +37,7 @@ docker image tensorflow/tensorflow:latest-gpy-jupyter 개선한 내용
 * opencv-python 설치하기 위한 build
 * requirements.txt 설치
 ### docker build 
+* Dockerfile은 root권한으로 build하여 root권한으로 실행하게 되어 있으며 보안상 사용자권한으로 실행코자 할 경우 주석을 해제하여 build하면 됩니다.
 ```
 git clone https://github.com/spisokgit/tf2.git
 docker build --rm -t spisok/tf2:gpu-jupyter-cv .
